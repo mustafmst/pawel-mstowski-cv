@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document properties and packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,12pt,final]{memoir}
+
+% misc
+\renewcommand{\familydefault}{bch}	% font
+\pagestyle{empty}					% no pagenumbering
+\setlength{\parindent}{0pt}			% no paragraph indentation
+
+
+% required packages (add your own)
+\usepackage{flowfram}										% column layout
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
+\usepackage{graphicx}										% figures
+\usepackage{url}											% URLs
+\usepackage[usenames,dvipsnames]{xcolor}					% color
+\usepackage{multicol}										% columns env.
+	\setlength{\multicolsep}{0pt}
+\usepackage{paralist}										% compact lists
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create column layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define length commands
+\setlength{\vcolumnsep}{\baselineskip}
+\setlength{\columnsep}{\vcolumnsep}
+
+% frame setup (flowfram package)
+% left frame
+\newflowframe{0.3\textwidth}{\textheight}{0pt}{0pt}[left]
+	\newlength{\LeftMainSep}
+	\setlength{\LeftMainSep}{0.3\textwidth}
+	\addtolength{\LeftMainSep}{1\columnsep}
+ 
+% small static frame for the vertical line
+\newstaticframe{1.5pt}{\textheight}{\LeftMainSep}{0pt}
+ 
+% content of the static frame
+\begin{staticcontents}{1}
+\hfill
+\tikz{%
+	\draw[loosely dotted,color=RoyalBlue,line width=1.5pt,yshift=0]
+	(0,0) -- (0,\textheight);}%
+\hfill\mbox{}
+\end{staticcontents}
+ 
+% right frame
+\addtolength{\LeftMainSep}{1.5pt}
+\addtolength{\LeftMainSep}{1\columnsep}
+\newflowframe{0.6\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define macros (for convience)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Sep}{\vspace{1.5em}}
+\newcommand{\SmallSep}{\vspace{0.5em}}
+
+\newenvironment{AboutMe}
+	{\ignorespaces\textbf{\color{RoyalBlue} About me}}
+	{\Sep\ignorespacesafterend}
+	
+\newcommand{\CVSection}[1]
+	{\Large\textbf{#1}\par
+	\SmallSep\normalsize\normalfont}
+
+\newcommand{\CVItem}[1]
+	{\textbf{\color{RoyalBlue} #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Left frame
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+	\hfill
+	\includegraphics[width=0.6\columnwidth]{photo}
+	\vspace{-7cm}
+\end{figure}
+
+\begin{flushright}\small
+	Paweł Mstowski \\
+	\url{pawel.mstowski@gmail.com}  \\
+	\url{https://github.com/mustafmst} \\
+	+48 668 308 383
+\end{flushright}\normalsize
+\framebreak
+
+
+% Right frame
+%%%%%%%%%%%%%%%%%%%%
+\Huge\bfseries {Paweł \color{RoyalBlue} Mstowski} \\
+\Large\bfseries  Software Developer \\
+
+\normalsize\normalfont
+
+% Experience
+\CVSection{Experience}
+\CVItem{Sep 2017 - present, ABB }\\
+Part of a ABB Ability™ Ellipse® APM development team. Working mostly on applications backend but also created parts of its frontend. Integrated aplication with Azure AD, AD FS and Keycloak authentication using OpenID Connect.  
+\SmallSep
+
+\CVItem{Jul 2015 - Aug 2017, Sabre}\\
+ARI(Availability Rate Inventory Sync) and Synxis Guest Connect end to end tests automation using MbUnit, Selenium and Specflow.
+\Sep
+
+% Education
+\CVSection{Education}
+\CVItem{2017 - present, Jagiellonian University}\\
+MSc. Applied Computer Science, Video Game Production
+\SmallSep
+
+\CVItem{2007 - 2010, AGH University of science and technology}\\
+BSc. Applied Computer Science, Geoinformatics
+\SmallSep
+
+% Skills
+\CVSection{Skills}
+\CVItem{Operating Systems}
+\begin{multicols}{3}
+\begin{compactitem}[\color{RoyalBlue}$\circ$]
+	\item Windows 
+	\item Linux
+\end{compactitem}
+\end{multicols}
+\SmallSep
+
+\CVItem{Programming Languages}
+\begin{multicols}{3}
+\begin{compactitem}[\color{RoyalBlue}$\circ$]
+	\item C\# 
+	\item JavaScript 
+	\item Python
+	\item TypeScript
+	\item HTML
+	\item CSS
+	\item GO
+	\item C++
+\end{compactitem}
+\end{multicols}
+\SmallSep
+
+\CVItem{Frameworks}
+\begin{multicols}{3}
+\begin{compactitem}[\color{RoyalBlue}$\circ$]
+	\item .NET Core
+	\item ASP.NET
+	\item React
+	\item Vue
+	\item OpenId Connect
+	\item NUnit
+	\item SpecFlow
+\end{compactitem}
+\end{multicols}
+\SmallSep
+
+\CVItem{Other Technologies}
+\begin{multicols}{3}
+\begin{compactitem}[\color{RoyalBlue}$\circ$]
+	\item Docker
+	\item Kubernetes
+	\item Kafka
+	\item Azure
+	\item Keycloak
+	\item Azure DevOps
+	\item GIT
+\end{compactitem}
+\end{multicols}
+\Sep 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
